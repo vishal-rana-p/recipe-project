@@ -147,7 +147,7 @@ For this analysis, we examined the distribution of the proportion of protein in 
 ></iframe>
 
 <iframe
-  src="util/num_ratings.html"
+  src="util/Protein Proportion.html"
   width="800"
   height="600"
   frameborder="0"
