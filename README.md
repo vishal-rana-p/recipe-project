@@ -146,19 +146,13 @@ For this analysis, we examined the distribution of the proportion of protein in 
   frameborder="0"
 ></iframe>
 
-<iframe
-  src="util/Protein Proportion.html"
-  width="800"
-  height="600"
-  frameborder="0"
-></iframe>
 
 ### Bivariate Analysis
 
-For this analysis, we examined the distribution of the rating of the recipe conditioned between the high protein recipes and low protein recipes. The graph below shows that recipes are more or less evenly rated regardless of the protein content.
+For this analysis, we examined the distribution of the rating of the recipe conditioned between the protein proportion and number of recipes. The graph below shows that recipes are more likely to have less protein content.
 
 <iframe
-  src="util/Num recipe for rating.html"
+  src="util/Protein Proportion.html"
   width="800"
   height="600"
   frameborder="0"
@@ -177,7 +171,7 @@ For this section, we investigated the relationship between the Protein content a
 According to the plot, recipes have a high rating could be either more protein containing.
 
 <iframe
-  src="assets/interesting_agg.html"
+  src="util/Num recipe for rating.html"
   width="800"
   height="600"
   frameborder="0"
