@@ -164,3 +164,21 @@ For this analysis, we examined the distribution of the rating of the recipe cond
   frameborder="0"
 ></iframe>
 
+### Interesting Aggregates
+
+For this section, we investigated the relationship between the Protein content and rating of the recipes. First, we created a small pivot table, to store the ratings for high and low protein recipes. Later we visualized the table.
+
+| rating  | High Protein           | 1.0                      | 2.0                   | 3.0                   | | 4.0                   | | 5.0                   | 
+| ------: | ---------------------: | -----------------------: | --------------------: | --------------------: | | --------------------: | | --------------------: |
+|       0 |                True    |                1764      |             1327      |             3789      | |             19222     | |             96638     |
+|       1 |                False   |                1106      |             1041      |             3383      | |             18085     | |             73038     |
+
+ 
+According to the plot, recipes have a high rating could be either more protein containing.
+
+<iframe
+  src="assets/interesting_agg.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
