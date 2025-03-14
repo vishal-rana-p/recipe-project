@@ -137,10 +137,17 @@ Our cleaned dataframe ended up with 234428 rows and 27 columns. Here are the fir
 
 ### Univariate Analysis
 
-For this analysis, we examined the distribution of the proportion of sugar in a recipe. As the plot below shows, the distribution skewed to the right, indicating that most of the recipes on food.com have a low proportion of sugar. There is also a decreasing trend, indicating that as the proportion of sugar in recipes gets higher, there are less of those recipes on food.com.
+For this analysis, we examined the distribution of the proportion of protein in a recipe. As the second plot below shows, most of the recipes on food.com have a low proportion of protein. There is also a decreasing trend, indicating that as the proportion of protein in recipes gets higher, there are less of those recipes on food.com.
 
 <iframe
   src="util/Ratings.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+<iframe
+  src="util/num_ratings.html"
   width="800"
   height="600"
   frameborder="0"
