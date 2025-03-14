@@ -155,10 +155,10 @@ For this analysis, we examined the distribution of the proportion of protein in 
 
 ### Bivariate Analysis
 
-For this analysis, we examined the distribution of the rating of the recipe conditioned between the sugary recipes and non-sugary recipes. The graph below shows that recipes with rating of 3, 4 and 5 are more likely to be non-sugary recipes while the recipes with rating of 1 and 2 are more likely to be sugary recipes. We would dive deeper to see if the difference in these proportions are significant in later sections.
+For this analysis, we examined the distribution of the rating of the recipe conditioned between the high protein recipes and low protein recipes. The graph below shows that recipes are more or less evenly rated regardless of the protein content.
 
 <iframe
-  src="util/bivariate.html"
+  src="util/Num recipe for rating.html"
   width="800"
   height="600"
   frameborder="0"
