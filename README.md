@@ -137,7 +137,7 @@ Our cleaned dataframe ended up with 234428 rows and 27 columns. Here are the fir
 
 ### Univariate Analysis
 
-For this analysis, we examined the distribution of the proportion of protein in a recipe. As the second plot below shows, most of the recipes on food.com have a low proportion of protein. There is also a decreasing trend, indicating that as the proportion of protein in recipes gets higher, there are less of those recipes on food.com.
+For this analysis, we examined the distribution of the proportion of protein in a recipe. The first plot shows the ratings, displaying the number of ratings for each rating. As the second plot below shows, most of the recipes on food.com have a low proportion of protein. There is also a decreasing trend, indicating that as the proportion of protein in recipes gets higher, there are less of those recipes on food.com.
 
 <iframe
   src="util/Ratings.html"
@@ -153,4 +153,14 @@ For this analysis, we examined the distribution of the proportion of protein in 
   frameborder="0"
 ></iframe>
 
+### Bivariate Analysis
+
+For this analysis, we examined the distribution of the rating of the recipe conditioned between the sugary recipes and non-sugary recipes. The graph below shows that recipes with rating of 3, 4 and 5 are more likely to be non-sugary recipes while the recipes with rating of 1 and 2 are more likely to be sugary recipes. We would dive deeper to see if the difference in these proportions are significant in later sections.
+
+<iframe
+  src="util/bivariate.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
 
