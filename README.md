@@ -202,7 +202,7 @@ We moved on to examine the missingness of `'rating'` in the merged DataFrame by 
 **Significance Level:** 0.05
 
 <iframe
-  src="assets/distr_rating_sugar.html"
+  src="util/protein_proportion_comparison.html"
   width="800"
   height="600"
   frameborder="0"
@@ -211,7 +211,7 @@ We moved on to examine the missingness of `'rating'` in the merged DataFrame by 
 We ran a permutation test by shuffling the missingness of rating for 1000 times to collect 1000 simulating mean differences in the two distributions as described in the test statistic.
 
 <iframe
-  src="assets/empirical_diff_sugar.html"
+  src="util/protein_proportion_permutation.html"
   width="800"
   height="600"
   frameborder="0"
@@ -229,17 +229,10 @@ The **observed statistic** of **0.0052** is indicated by the red vertical line o
 
 **Significance Level:** 0.05
 
-<iframe
-  src="assets/empirical_diff_prescale.html"
-  width="800"
-  height="600"
-  frameborder="0"
-></iframe>
-
 Due to the outliers in cooking time, it is difficult to identify the shapes of the two distributions, so we update the scale to take a closer look.
 
 <iframe
-  src="assets/distr_rating_minutes.html"
+  src="utils/minutes_comparison.html"
   width="800"
   height="600"
   frameborder="0"
@@ -248,7 +241,7 @@ Due to the outliers in cooking time, it is difficult to identify the shapes of t
 We ran another permutation test by shuffling the missingness of rating for 1000 times to collect 1000 simulating mean differences in the two distributions as described in the test statistic.
 
 <iframe
-  src="assets/empirical_diff_minutes.html"
+  src="util/minutes_permutation.html"
   width="800"
   height="600"
   frameborder="0"
