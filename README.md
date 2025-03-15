@@ -295,11 +295,13 @@ Before making our prediction, we rely on all the columns in the rating dataset, 
 For our baseline model, we are utilizing a Random Forest Regressor to predict recipe ratings. The dataset is split into training (80%) and test (20%) sets to ensure proper model evaluation.
 The features used in this model are 'minutes' and 'n_steps', both of which are numerical variables representing the preparation time and the number of steps required for a recipe. These features are standardized using a StandardScaler, and we also apply PolynomialFeatures to capture potential non-linear relationships in the data.
 To build the model, we define a Scikit-Learn pipeline, which includes:
-    1    Standard Scaling - Normalizing numerical features.
-    2    Polynomial Features - Expanding feature interactions.
-    3    Random Forest Regressor - A robust ensemble model for predictions.
+1. Standard Scaling - Normalizing numerical features.
+2. Polynomial Features - Expanding feature interactions.
+3. Random Forest Regressor - A robust ensemble model for predictions.
+
 After fitting the model, we evaluate its performance using Root Mean Squared Error (RMSE) and R² score. The baseline model achieved the following results:
-    •    Baseline Model RMSE: 0.7192
-    •    R² Score: -0.0077
+- Baseline Model RMSE: 0.7192
+- R² Score: -0.0077
+
 The negative R² score suggests that the model performs worse than predicting the mean rating for all recipes. This indicates that our current feature set may not be strongly predictive of recipe ratings. Further feature engineering and hyperparameter tuning will be necessary to improve the model's performance.
 
