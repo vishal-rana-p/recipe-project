@@ -275,3 +275,26 @@ Then we shuffled the ratings for 1000 times to collect 1000 simulating mean diff
   height="600"
   frameborder="0"
 ></iframe>
+
+#### Conclusion of Permutation Test
+
+Since the **p-value** that we found **(1.0)** is not less than the significance level of 0.05, we **do not reject the null hypothesis**. People appear to rate all the recipes on the same scale. One plausible explanation for this founding could be that people are not very concerned with protein content when opposed to taste.
+
+## Framing a Prediction Problem
+
+We plan to **predict rating of a recipe** which would be a **classification problem** since rating is a categorical variable. To address our prediction problem, we will build a multi-class classifier since our ratings have 5 possible values that the model will predict from.
+
+We chose to predict rating because it is a good representation of the overall recipe, and is responsive to features while only having 5 possible values.
+
+To evaluate our model, we will use the RMSE and R^2, because the distribution for the ratings are heavily skewed left with most ratings concentrated in the higher ratings (4-5).
+
+Before making our prediction, we rely on all the columns in the rating dataset, as listed in the introduction. These columns contain features specific to the recipes themselves, meaning we can access this information even if no one has rated or reviewed them yet.
+
+## Baseline Model
+
+For our baseline model, we are using a Random Forest Regressor and splitting the dataset into training and test sets, with 80% of the data used for training and 20% for testing. The features selected for this model are 'minutes', which represents the time required to prepare the recipe, and 'n_steps', which indicates the number of steps in the recipe. Both of these features are numerical.
+
+To preprocess the data, we first standardize the features using StandardScaler to ensure they are on a comparable scale. We also apply PolynomialFeatures to capture potential non-linear relationships between the features. Finally, we fit a Random Forest Regressor to learn from the training data.
+
+To evaluate model performance, we use Root Mean Squared Error (RMSE) and R² score. The RMSE for this model is {rmse:.4f}, indicating the average prediction error. The R² score, {r2:.4f}, helps assess how well the model explains the variance in ratings. These metrics provide insight into how effectively our model predicts recipe ratings based on the given features.
+
