@@ -232,7 +232,7 @@ The **observed statistic** of **0.0052** is indicated by the red vertical line o
 Due to the outliers in cooking time, it is difficult to identify the shapes of the two distributions, so we update the scale to take a closer look.
 
 <iframe
-  src="utils/minutes_comparison.html"
+  src="util/minutes_comparison.html"
   width="800"
   height="600"
   frameborder="0"
@@ -248,3 +248,30 @@ We ran another permutation test by shuffling the missingness of rating for 1000 
 ></iframe>
 
 The **observed statistic** of **51.497** is indicated by the red vertical line on the graph. Since the **p-value** that we found **(0.113)** is > 0.05 which is the significance level that we set, we **fail to reject the null hypothesis**. The missingness of rating does not depend on the cooking time in minutes of the recipe.
+
+## Hypothesis Testing
+
+As mentioned in the introduction, we are curious about whether people rate high-protein recipes and low-protein recipes on the same scale. Proportion of protein is referring to the values in `'protein_proportion'`.
+
+To investigate the question, we ran a **permutation test** with the following hypotheses, test statistic, and significance level.
+
+**Null Hypothesis:** People rate all the recipes on the same scale.
+
+**Alternative Hypothesis:** People rate high-protein recipes higher than low-protein recipes.
+
+**Test Statistic:** The difference in mean between rating of high-protein recipes and low-protein recipes.
+
+**Significance Level:** 0.05
+
+The reason we chose to run a permutation test is because we do not have any information of any population, and we want to check if the two distributions look like they come from the same population. We proposed that **people rate the high-protein recipes higher** because people might be concerned with the health benefits relating to the recipe, and we would like to know all the opinions from the users, so we used rating instead of average rating of the recipes. For the test statistic, we chose the difference in mean of the ratings of two groups of recipes instead of absolute difference in mean.
+
+To run the test, we first split the data points into two groups, high-protein, which are recipes with high proportion of protein, and the rest of the data points are in the low-protein group. The **observed statistic** is **-0.027**.
+
+Then we shuffled the ratings for 1000 times to collect 1000 simulating mean differences in the two distributions as described in the test statistic. We got a **p-value** of **1.0**.
+
+<iframe
+  src="assets/empirical_diff_rating.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
