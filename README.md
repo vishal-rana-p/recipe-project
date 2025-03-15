@@ -320,10 +320,10 @@ To test this, we conducted a permutation test, where we randomly shuffled the du
 **Significance Level**: 0.05
 
 After running the analysis, we obtained the following RMSE values:
-- RMSE for short recipes (≤ mean duration): {rmse_short:.4f}
-- RMSE for long recipes (> mean duration): {rmse_long:.4f}
-- Observed RMSE Difference: {observed_diff:.4f}
-- Permutation Test p-value: {p_value:.4f}
+- RMSE for short recipes (≤ mean duration): 0.7021
+- RMSE for long recipes (> mean duration): 0.792
+- Observed RMSE Difference: 0.7143
+- Permutation Test p-value: 1.00
 
 <iframe
   src="util/Fairness analysis1.html"
