@@ -305,6 +305,53 @@ After fitting the model, we evaluate its performance using Root Mean Squared Err
 
 The negative R² score suggests that the model performs worse than predicting the mean rating for all recipes. This indicates that our current feature set may not be strongly predictive of recipe ratings. Further feature engineering and hyperparameter tuning will be necessary to improve the model's performance.
 
+## Final Model
+
+For our final model, we aimed to improve upon the baseline model by refining our feature selection, transformation techniques, and hyperparameter tuning.
+Baseline Model Recap
+In our baseline model, we used minutes and n_steps as the features to predict the average rating of a recipe. We utilized a RandomForestRegressor as the model and conducted minimal feature engineering. The performance metrics for the baseline model were:
+- Baseline RMSE: 0.7192
+- Baseline R² Score: -0.0077
+
+The negative R² value indicated that our baseline model performed worse than simply predicting the mean of the dataset. This suggested that our feature set and transformations were insufficient to capture the underlying patterns in the data.
+
+Feature Selection & Transformations
+To improve our model, we introduced additional engineered features and preprocessing transformations:
+1. Steps per Minute (steps_per_minute):
+   - This feature was computed as n_steps / minutes, capturing the density of steps in a given recipe.
+   - We handled infinities and missing values by replacing them with 0.
+2. Preprocessing Pipeline:
+   - StandardScaler: Standardized steps_per_minute to normalize its distribution.
+   - QuantileTransformer: Applied to n_steps and minutes to achieve a normal-like distribution.
+   - PolynomialFeatures: Introduced non-linearity by adding polynomial interactions, with the optimal degree determined through GridSearchCV.
+
+Hyperparameter Tuning
+To optimize our RandomForestRegressor, we conducted GridSearchCV with cross-validation, testing:
+- Polynomial degrees: 1, 2, 3
+- Number of trees (n_estimators): 50, 100
+- Maximum tree depth (max_depth): 5, 10, None
+- Minimum samples required to split a node (min_samples_split): 2, 5
+
+The best hyperparameters found were:
+- ('model_max_depth': 10, 'model_min_samples_split': 2, 'model_n_estimators': 100, 'poly_degree': 2)
+
+Using these optimized values, we trained our final model.
+
+Final Model Performance
+After applying these improvements, the final model achieved:
+- Final RMSE: 0.7143
+- Final R² Score: 0.0062
+
+Compared to the baseline model, this represents:
+- A reduction in RMSE (from 0.7192 to 0.7143), indicating an improvement in prediction accuracy.
+- A shift from negative to slightly positive R² (from -0.0077 to 0.0062), meaning the model now performs marginally better than simply predicting the mean.
+
+Final Thoughts
+- While the improvement is modest, the refined feature engineering and hyperparameter tuning slightly enhanced prediction accuracy.
+- The continued low R² suggests that recipe rating predictions are highly complex, potentially requiring additional features (such as ingredient compositions, user reviews, or textual recipe descriptions).
+- Future work could explore more advanced models like Gradient Boosting (XGBoost, LightGBM) or Neural Networks to capture deeper patterns in the data.
+
+
 ## Fairness Analysis
 
 For our fairness analysis, we split the recipes into two groups based on their preparation duration: short recipes and long recipes. We designated short recipes as those with a preparation time of ≤ mean duration and long recipes as those with a preparation time of > mean duration. The mean duration of all recipes in the test set was used as the threshold for this split.
