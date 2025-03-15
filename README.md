@@ -176,3 +176,82 @@ According to the plot, recipes have a high rating could be either more protein c
   height="600"
   frameborder="0"
 ></iframe>
+
+Interestingly, the graph shows that as protein content increases, there is no significant change in the distribution of ratings. 
+
+## Assessment of Missingness
+
+Three columns, `'date'`, `'rating'`, and `'review'`, in the merged dataset have a significant amount of missing values, so we decided to assess the missingness on the dataframe.
+
+### NMAR Analysis
+
+We think the missing values in the 'review' column are Not Missing At Random (NMAR) because the likelihood of leaving a review depends on how strongly someone feels about a recipe. If a person feels neutral or indifferent about a dish, they may not see a reason to leave a review since they don’t have much to say. On the other hand, people who have strong opinions—whether positive or negative—are more motivated to go through the effort of visiting the page, clicking multiple buttons, and taking the time to write a review. For instance, someone who really enjoyed a recipe would likely be willing to go through this process to share their positive experience.
+
+### Missingness Dependency
+
+We moved on to examine the missingness of `'rating'` in the merged DataFrame by testing the dependency of its missingness. We are investigating whether the missiness in the `'rating'` column depends on the column `'protein_propotion'`, which is the proportion of protein out of the total pdv, or the column `'minutes'`, which is the number of minutes to make the recipe.
+
+> Proportion of Sugar and Rating
+
+**Null Hypothesis:** The missingness of ratings does not depend on the proportion of protein in the recipe.
+
+**Alternate Hypothesis:** The missingness of ratings does depend on the proportion of protein in the recipe.
+
+**Test Statistic:** The absolute difference of mean in the proportion of protein of the distribution of the group without missing ratings and the distribution of the group without missing ratings.
+
+**Significance Level:** 0.05
+
+<iframe
+  src="assets/distr_rating_sugar.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+We ran a permutation test by shuffling the missingness of rating for 1000 times to collect 1000 simulating mean differences in the two distributions as described in the test statistic.
+
+<iframe
+  src="assets/empirical_diff_sugar.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+The **observed statistic** of **0.0052** is indicated by the red vertical line on the graph. Since the **p_value** that we found **(0.0)** is < 0.05 which is the significance level that we set, we **reject the null hypothesis**. The missingness of `'rating'` does depend on the `'protein_proportion'`, which is proportion of protein in the recipe.
+
+> Minutes and Rating
+
+**Null Hypothesis:** The missingness of ratings does not depend on the cooking time of the recipe in minutes.
+
+**Alternate Hypothesis:** The missingness of ratings does depend on the cooking time of the recipe in minutes.
+
+**Test Statistic:** The absolute difference of mean in cooking time of the recipe in minutes of the distribution of the group without missing ratings and the distribution of the group without missing ratings.
+
+**Significance Level:** 0.05
+
+<iframe
+  src="assets/empirical_diff_prescale.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+Due to the outliers in cooking time, it is difficult to identify the shapes of the two distributions, so we update the scale to take a closer look.
+
+<iframe
+  src="assets/distr_rating_minutes.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+We ran another permutation test by shuffling the missingness of rating for 1000 times to collect 1000 simulating mean differences in the two distributions as described in the test statistic.
+
+<iframe
+  src="assets/empirical_diff_minutes.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+The **observed statistic** of **51.497** is indicated by the red vertical line on the graph. Since the **p-value** that we found **(0.113)** is > 0.05 which is the significance level that we set, we **fail to reject the null hypothesis**. The missingness of rating does not depend on the cooking time in minutes of the recipe.
