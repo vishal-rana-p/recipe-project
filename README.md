@@ -292,9 +292,14 @@ Before making our prediction, we rely on all the columns in the rating dataset, 
 
 ## Baseline Model
 
-For our baseline model, we are using a Random Forest Regressor and splitting the dataset into training and test sets, with 80% of the data used for training and 20% for testing. The features selected for this model are 'minutes', which represents the time required to prepare the recipe, and 'n_steps', which indicates the number of steps in the recipe. Both of these features are numerical.
-
-To preprocess the data, we first standardize the features using StandardScaler to ensure they are on a comparable scale. We also apply PolynomialFeatures to capture potential non-linear relationships between the features. Finally, we fit a Random Forest Regressor to learn from the training data.
-
-To evaluate model performance, we use Root Mean Squared Error (RMSE) and R² score. The RMSE for this model is {rmse:.4f}, indicating the average prediction error. The R² score, {r2:.4f}, helps assess how well the model explains the variance in ratings. These metrics provide insight into how effectively our model predicts recipe ratings based on the given features.
+For our baseline model, we are utilizing a Random Forest Regressor to predict recipe ratings. The dataset is split into training (80%) and test (20%) sets to ensure proper model evaluation.
+The features used in this model are 'minutes' and 'n_steps', both of which are numerical variables representing the preparation time and the number of steps required for a recipe. These features are standardized using a StandardScaler, and we also apply PolynomialFeatures to capture potential non-linear relationships in the data.
+To build the model, we define a Scikit-Learn pipeline, which includes:
+    1    Standard Scaling - Normalizing numerical features.
+    2    Polynomial Features - Expanding feature interactions.
+    3    Random Forest Regressor - A robust ensemble model for predictions.
+After fitting the model, we evaluate its performance using Root Mean Squared Error (RMSE) and R² score. The baseline model achieved the following results:
+    •    Baseline Model RMSE: 0.7192
+    •    R² Score: -0.0077
+The negative R² score suggests that the model performs worse than predicting the mean rating for all recipes. This indicates that our current feature set may not be strongly predictive of recipe ratings. Further feature engineering and hyperparameter tuning will be necessary to improve the model's performance.
 
