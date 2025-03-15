@@ -305,3 +305,32 @@ After fitting the model, we evaluate its performance using Root Mean Squared Err
 
 The negative R² score suggests that the model performs worse than predicting the mean rating for all recipes. This indicates that our current feature set may not be strongly predictive of recipe ratings. Further feature engineering and hyperparameter tuning will be necessary to improve the model's performance.
 
+## Fairness Analysis
+
+For our fairness analysis, we split the recipes into two groups based on their preparation duration: short recipes and long recipes. We designated short recipes as those with a preparation time of ≤ mean duration and long recipes as those with a preparation time of > mean duration. The mean duration of all recipes in the test set was used as the threshold for this split.
+We chose to analyze fairness by evaluating the Root Mean Squared Error (RMSE) for each group. RMSE provides insight into how well the model predicts ratings for short and long recipes. If our model exhibits fairness, the RMSE should be approximately equal across both groups.
+To test this, we conducted a permutation test, where we randomly shuffled the duration labels and recalculated the RMSE difference multiple times to generate a null distribution. This allows us to determine whether the observed RMSE difference is statistically significant.
+
+**Null Hypothesis**: Our model is fair. The RMSE for short and long recipes is approximately equal, and any observed difference is due to random chance.
+
+**Alternative Hypothesis**: Our model is unfair. The RMSE for short recipes is significantly different from the RMSE for long recipes.
+
+**Test Statistic**: Difference in RMSE between short and long recipes (RMSE_short- RMSE_long)
+
+**Significance Level**: 0.05
+
+After running the analysis, we obtained the following RMSE values:
+- RMSE for short recipes (≤ mean duration): {rmse_short:.4f}
+- RMSE for long recipes (> mean duration): {rmse_long:.4f}
+- Observed RMSE Difference: {observed_diff:.4f}
+- Permutation Test p-value: {p_value:.4f}
+
+<iframe
+  src="util/Fairness analysis1.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+To visualize the fairness analysis, we plotted a histogram of the permutation differences in RMSE. The observed difference is marked on the plot to compare it against the null distribution.
+If the p-value is less than 0.05, we reject the null hypothesis and conclude that the model exhibits unfairness in predicting ratings based on recipe duration. Otherwise, we fail to reject the null hypothesis, meaning any differences in RMSE could be due to random variation.
