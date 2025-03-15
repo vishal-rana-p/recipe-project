@@ -270,7 +270,7 @@ To run the test, we first split the data points into two groups, high-protein, w
 Then we shuffled the ratings for 1000 times to collect 1000 simulating mean differences in the two distributions as described in the test statistic. We got a **p-value** of **1.0**.
 
 <iframe
-  src="assets/empirical_diff_rating.html"
+  src="util/hypothesis_test.html"
   width="800"
   height="600"
   frameborder="0"
